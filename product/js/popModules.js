@@ -315,6 +315,7 @@ class skinPOP extends popBG{
 class commonMessage extends commonPOP{
     constructor(){
         super();
+        this.Message('');
         this.init()
     }
     init(){
