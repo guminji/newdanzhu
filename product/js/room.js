@@ -1411,6 +1411,13 @@ class RoomHeader extends Component {
 
   // 事件 - 排行榜
   handlerRank() {
+    pops.commonMessage = new laya.components.Popup({
+      name: 'commonMessage',
+      box: new commonMessage('暂未开放此功能！！'),
+      closeBtnShow: false,
+      shadeShow: false,
+    })
+    pops.commonMessage.popShow();
     console.log('按钮 - 排行榜');
   }
 
@@ -1428,13 +1435,8 @@ class RoomHeader extends Component {
 
   // 事件 - 设置
   handlerConfig() {
-    pops.settings = new laya.components.Popup({
-      name: 'settingsPOP',
-      box: new settingsPOP(),
-      closeBtnShow: false,
-      shadeShow: false,
-    })
-    pops.settings.popShow();
+    pops.settings = new settingsPOP();
+    Laya.stage.addChild(pops.settings);
     console.log('按钮 - 设置');
   }
 

@@ -17,12 +17,39 @@ class popBG extends laya.ui.Component{
             this.close();
         })*/
     }
-    /*close(){
+    close(){
+        this.parent.popHide();
+    }
+    /*show(){
+        this.visible = true;
+    }*/
+    setSprite(target,options){
+        for(var key in options){
+            target[key] = options[key];
+        }
+    }
+}
+class myPOP extends laya.ui.Component{
+    constructor(){
+        super();
+        this.popBG = new laya.display.Sprite();
+         this.setSprite(this.popBG,{
+         height:this.stage.height,
+         width:this.stage.width,
+         alpha:0.6
+         })
+         this.popBG.graphics.drawRect(0,0,this.popBG.width,this.popBG.height,'black');
+         this.addChild(this.popBG);
+         this.popBG.on('click',this,function(){
+         this.close();
+         })
+    }
+    close(){
         this.visible = false;
     }
     show(){
         this.visible = true;
-    }*/
+    }
     setSprite(target,options){
         for(var key in options){
             target[key] = options[key];
@@ -158,7 +185,7 @@ class toChargePOP extends popBG{
         })
     }
 }
-class settingsPOP extends popBG{
+class settingsPOP extends myPOP{
     constructor(){
         super();
         //this.BG =null;
@@ -226,7 +253,7 @@ class settingsPOP extends popBG{
             }
         })
         this.skinBtn.on('click',this,function(){
-            pops.settings.popHide();
+            this.close();
             pops.skinChange = new laya.components.Popup({
                 name: 'skinPOP',
                 box: new skinPOP(),
@@ -313,15 +340,17 @@ class skinPOP extends popBG{
 }
 //提示信息弹层
 class commonMessage extends commonPOP{
-    constructor(){
+    constructor(message){
         super();
-        this.Message('');
-        this.init()
+        this.Message = message;
+        this.init();
+        this.bindEvent();
     }
     init(){
+        var self = this;
         var sureBtn = this.sureBtn = new laya.ui.Button();
         this.setSprite(sureBtn,{
-            skin:'popModules/common_closebtn.png',
+            skin:'popModules/common_sure.png',
             centerX:0,
             bottom:20,
             stateNum:1
@@ -336,16 +365,23 @@ class commonMessage extends commonPOP{
             fontSize:36,
             valign:'middle',
             align:'center',
-            wordWrap :true
+            wordWrap :true,
+            text:self.Message
         })
         this.BG.addChild(messageLabel);
     }
-    showMessage(message){
+    bindEvent(){
+        this.sureBtn.on('click',this,function(){
+            this.close();
+        })
+        //this.close();
+    }
+    /*showMessage(message){
         this.messageLabel.text = message;
         this.show();
         console.log(message);
         console.log(this.messageLabel.text);
-    }
+    }*/
 }
 
 
