@@ -51,6 +51,14 @@ class Game {
         jsonUrl: IMG_PATH + 'popModules.json',
         imageUrl: IMG_PATH + 'popModules.png'
       });
+      webgm.winPop = new SpriteFrames({
+        jsonUrl: IMG_PATH + 'winpop.json',
+        imageUrl: IMG_PATH + 'winpop.png'
+      });
+      webgm.helpPop = new SpriteFrames({
+        jsonUrl: IMG_PATH + 'help.json',
+        imageUrl: IMG_PATH + 'help.png'
+      });
 
       // 雪碧图 - 按钮
       webgm.framesBtn = new SpriteFrames({

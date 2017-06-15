@@ -5502,7 +5502,7 @@
 
 		__class(List,'laya.ui.List',_super);
 		var __proto=List.prototype;
-		Laya.imps(__proto,{"laya.ui.IRender":true,"laya.ui.IItem":true})
+		Laya.imps(__proto,{"laya.ui. ":true,"laya.ui.IItem":true})
 		/**@inheritDoc */
 		__proto.destroy=function(destroyChild){
 			(destroyChild===void 0)&& (destroyChild=true);

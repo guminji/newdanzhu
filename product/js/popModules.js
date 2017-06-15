@@ -67,7 +67,7 @@ class commonPOP extends popBG{
             height:webgm.framesPop.getTexture('commonbird.png').height,
             width:webgm.framesPop.getTexture('commonbird.png').width,
             centerX:0,
-            top:140
+            //top:140
         })
         this.addChild(BG);
         var closeBtn  =this.common_closeBtn  = new laya.ui.Image();
@@ -374,14 +374,93 @@ class commonMessage extends commonPOP{
         this.sureBtn.on('click',this,function(){
             this.close();
         })
-        //this.close();
     }
-    /*showMessage(message){
-        this.messageLabel.text = message;
-        this.show();
-        console.log(message);
-        console.log(this.messageLabel.text);
-    }*/
 }
-
-
+//代入金额确定弹框
+class takeinPOP extends commonPOP{
+    //参数 ownNum（自己的余额） takeNum(带入金额)
+    constructor(params){
+        super();
+        this.init(params);
+        this.bindEvent();
+    }
+    init(params){
+        var yourBalance_title = this.yourBalance_title = new laya.ui.Image();
+        this.setSprite(yourBalance_title,{
+            source:webgm.framesPop.getTexture('common_tips1.png'),
+            width:webgm.framesPop.getTexture('common_tips1.png').width,
+            height:webgm.framesPop.getTexture('common_tips1.png').height,
+            top:123,
+            left:54
+        })
+        this.BG.addChild(yourBalance_title)
+        var yourBalance_num = this.yourBalance_num = new laya.ui.Label();
+        this.setSprite(yourBalance_num,{
+            text:params.ownNum,
+            color:'white',
+            top:123,
+            left:345,
+            height:webgm.framesPop.getTexture('common_tips1.png').height,
+            fontSize:50,
+            valign:'middle',
+            align:'center',
+        })
+        this.BG.addChild(yourBalance_num);
+        var takein_title = this.takein_title = new Images();
+        this.setSprite(takein_title,{
+            source:webgm.framesPop.getTexture('common_tips2.png'),
+            width:webgm.framesPop.getTexture('common_tips2.png').width,
+            height:webgm.framesPop.getTexture('common_tips2.png').height,
+            top:230,
+            left:54
+        })
+        this.BG.addChild(takein_title);
+        var takein_container = this.takein_container = new Images();
+        this.setSprite(takein_container,{
+            source:webgm.framesPop.getTexture('common_tips3.png'),
+            width:webgm.framesPop.getTexture('common_tips3.png').width,
+            height:webgm.framesPop.getTexture('common_tips3.png').height,
+            top:221,
+            left:360
+        })
+        this.BG.addChild(takein_container);
+        var takein_input = this.takein_input = new Label();
+        this.setSprite(takein_input,{
+            width:webgm.framesPop.getTexture('common_tips3.png').width,
+            height:webgm.framesPop.getTexture('common_tips3.png').height,
+            top:0,
+            left:0,
+            color:'white',
+            valign:'middle',
+            align:'center',
+            text:params.takeNum,
+            fontSize:50
+        })
+        this.takein_container.addChild(takein_input);
+        var sureBtn = this.sureBtn = new laya.ui.Button();
+        this.setSprite(sureBtn,{
+            skin:'popModules/common_sure.png',
+            left:87,
+            bottom:33,
+            stateNum:1
+        })
+        this.BG.addChild(sureBtn);
+        var cannelBtn = this.cannelBtn = new laya.ui.Button();
+        this.setSprite(cannelBtn,{
+            skin:'popModules/common_cannel.png',
+            right:87,
+            bottom:33,
+            stateNum:1
+        })
+        this.BG.addChild(cannelBtn);
+    }
+    bindEvent(){
+        this.cannelBtn.on('click',this,function(){
+            this.close();
+        })
+        this.sureBtn.on('click',this,function(){
+            //带入金额
+            this.close();
+        })
+    }
+}
