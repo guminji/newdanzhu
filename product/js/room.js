@@ -1407,8 +1407,8 @@ class RoomHeader extends Component {
   // 事件 - 返回
   handlerBack() {
     pops.takeIn = new laya.components.Popup({
-      name: 'helpPOP',
-      box: new helpPOP({
+      name: 'bigwin',
+      box: new bigwin({
             ownNum:987,
             takeNum:2366123
       }),

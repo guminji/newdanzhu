@@ -5,30 +5,17 @@
 class popBG extends laya.ui.Component{
     constructor(){
         super();
-        /*this.popBG = new laya.display.Sprite();
-        this.setSprite(this.popBG,{
-            height:this.stage.height,
-            width:this.stage.width,
-            alpha:0.6
-        })
-        this.popBG.graphics.drawRect(0,0,this.popBG.width,this.popBG.height,'black');
-        this.addChild(this.popBG);
-        this.popBG.on('click',this,function(){
-            this.close();
-        })*/
     }
     close(){
         this.parent.popHide();
     }
-    /*show(){
-        this.visible = true;
-    }*/
     setSprite(target,options){
         for(var key in options){
             target[key] = options[key];
         }
     }
 }
+//有遮罩背景的基类弹层
 class myPOP extends laya.ui.Component{
     constructor(){
         super();
@@ -237,6 +224,15 @@ class settingsPOP extends myPOP{
             centerX:0,
         })
         BG.addChild(skinBtn);
+        //换肤按钮
+        var helpBtn =this.helpBtn= new laya.ui.Button;
+        this.setSprite(helpBtn,{
+            height:73,
+            width:74,
+            top:150,
+            centerX:0,
+        })
+        BG.addChild(helpBtn);
     }
     bindEvent() {
         this.soundBtn.on('click',this,function(){
@@ -261,6 +257,17 @@ class settingsPOP extends myPOP{
                 shadeShow: false,
             }),
             pops.skinChange.popShow();
+            //pops.settings.popHide();
+        })
+        this.helpBtn.on('click',this,function(){
+            this.close();
+            pops.help = new laya.components.Popup({
+                name: 'helpPOP',
+                box: new helpPOP(),
+                closeBtnShow: false,
+                shadeShow: false,
+            }),
+            pops.help.popShow();
             //pops.settings.popHide();
         })
     }
@@ -462,5 +469,25 @@ class takeinPOP extends commonPOP{
             //带入金额
             this.close();
         })
+    }
+}
+class bigwin extends popBG{
+    constructor(){
+        super();
+        this.zOrder = 99999;
+        this.init();
+        this.bindEvent()
+    }
+    init(){
+        var container = this.container = new Images();
+        this.setSprite(container,{
+            source:webgm.winPop.getTexture('bigwinBG.png'),
+            height:webgm.winPop.getTexture('bigwinBG.png').height,
+            width:webgm.winPop.getTexture('bigwinBG.png').width,
+        })
+        this.addChild(container);
+    }
+    bindEvent(){
+
     }
 }

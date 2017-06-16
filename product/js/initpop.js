@@ -6,7 +6,9 @@
         global.pops={
             skinChange:null,
             settings:null,
-            tocharge:null
+            tocharge:null,
+            takeIn:null,
+            help:null
         }
     }
 })(window)
