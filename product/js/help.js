@@ -15,6 +15,9 @@ class helpPOP extends laya.ui.Component{
             target[key] = options[key];
         }
     }
+    close(){
+        this.parent.popHide();
+    }
     //创建容器
     init(){
         var HelpContainer = this.HelpContainer = new Images();
@@ -25,6 +28,22 @@ class helpPOP extends laya.ui.Component{
         })
         this.addChild(HelpContainer)
         this.creatSwiper()
+        var cannelBtn = this.cannelBtn = new laya.ui.Button();
+        this.setSprite(cannelBtn,{
+            width:86,
+            height:86,
+            right:5,
+            top:45,
+        })
+        this.HelpContainer.addChild(cannelBtn);
+        var skipBtn = this.skipBtn = new laya.ui.Button();
+        this.setSprite(skipBtn,{
+            width:300,
+            height:77,
+            centerX:0,
+            bottom:44,
+        })
+        this.HelpContainer.addChild(skipBtn);
     }
     creatSwiper(){
         var self = this;
@@ -129,6 +148,12 @@ class helpPOP extends laya.ui.Component{
         this.swiperTab.selectHandler = new Laya.Handler(self,function(index){
             this.index = index;
             laya.utils.Tween.to(this.swiperContainer,{x:-709*this.index},200)
+        })
+        this.cannelBtn.on('click',this,function(){
+            this.close();
+        })
+        this.skipBtn.on('click',this,function(){
+            this.close();
         })
     }
 }

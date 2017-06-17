@@ -15,6 +15,27 @@ class popBG extends laya.ui.Component{
         }
     }
 }
+//example
+class example extends popBG{
+    constructor(){
+        super();
+        this.zOrder = 99999;
+        this.init();
+        this.bindEvent()
+    }
+    init(){
+        var container = this.container = new Images();
+        this.setSprite(container,{
+            source:webgm.winPop.getTexture('bigwinBG.png'),
+            height:webgm.winPop.getTexture('bigwinBG.png').height,
+            width:webgm.winPop.getTexture('bigwinBG.png').width,
+        })
+        this.addChild(container);
+    }
+    bindEvent(){
+
+    }
+}
 //有遮罩背景的基类弹层
 class myPOP extends laya.ui.Component{
     constructor(){
@@ -471,7 +492,110 @@ class takeinPOP extends commonPOP{
         })
     }
 }
-class bigwin extends popBG{
+class exwin extends commonPOP{
+    constructor(params){
+        super();
+        this.zOrder = 99999;
+        this.init(params);
+        this.bindEvent()
+    }
+    init(params){
+        var title = this.title = new Images();
+        this.setSprite(title,{
+            source:webgm.winPop.getTexture('otherreward1.png'),
+            height:webgm.winPop.getTexture('otherreward1.png').height,
+            width:webgm.winPop.getTexture('otherreward1.png').width,
+            top:-50,
+            centerX:0
+        })
+        this.BG.addChild(title);
+        var task_name  = this.task_name  = new laya.ui.Image();
+        this.setSprite(task_name,{
+            source:webgm.winPop.getTexture('otherreward3.png'),
+            height:webgm.winPop.getTexture('otherreward3.png').height,
+            width:webgm.winPop.getTexture('otherreward3.png').width,
+            top:100,
+            centerX:0
+        })
+        var task_name_label = this.task_name_label = new laya.ui.Label();
+        this.setSprite(task_name_label,{
+            color:'#30dbfc',
+            fontSize:36,
+            text:'任务目标：',
+            left:100,
+            height:webgm.winPop.getTexture('otherreward3.png').height,
+            valign:'middle',
+            bold:true
+        })
+        task_name.addChild(task_name_label);
+        var task_name_content = this.task_name_content = new laya.ui.Label();
+        this.setSprite(task_name_content,{
+            color:'#ffffff',
+            fontSize:36,
+            text:params.task,
+            left:260,
+            height:webgm.winPop.getTexture('otherreward3.png').height,
+            valign:'middle'
+
+        })
+        task_name.addChild(task_name_content);
+        this.BG.addChild(task_name);
+        var task_reward  = this.task_reward  = new laya.ui.Image();
+        this.setSprite(task_reward,{
+            source:webgm.winPop.getTexture('otherreward3.png'),
+            height:webgm.winPop.getTexture('otherreward3.png').height,
+            width:webgm.winPop.getTexture('otherreward3.png').width,
+            top:220,
+            centerX:0
+        })
+        var task_reward_label = this.task_reward_label = new laya.ui.Label();
+        this.setSprite(task_reward_label,{
+            color:'#30dbfc',
+            fontSize:48,
+            text:'奖   励：',
+            left:100,
+            height:webgm.winPop.getTexture('otherreward3.png').height,
+            valign:'middle',
+            bold:true
+        })
+        task_reward.addChild(task_reward_label);
+        var task_reward_icon = this.task_reward_icon = new laya.ui.Image();
+        this.setSprite(task_reward_icon,{
+            source:webgm.winPop.getTexture('otherreward2.png'),
+            height:webgm.winPop.getTexture('otherreward2.png').height,
+            width:webgm.winPop.getTexture('otherreward2.png').width,
+            top:6,
+            left:260
+        })
+        task_reward.addChild(task_reward_icon);
+        var task_reward_content = this.task_reward_content = new laya.ui.Label();
+        this.setSprite(task_reward_content,{
+            color:'#fffc00',
+            fontSize:60,
+            text:params.account,
+            left:330,
+            height:webgm.winPop.getTexture('otherreward3.png').height,
+            valign:'middle',
+            bold:true
+        })
+        task_reward.addChild(task_reward_content);
+        this.BG.addChild(task_reward);
+        var sureBtn = this.sureBtn = new laya.ui.Button();
+        this.setSprite(sureBtn,{
+            skin:'popModules/common_sure.png',
+            centerX:0,
+            bottom:30,
+            stateNum:1
+        })
+        this.BG.addChild(sureBtn);
+    }
+    bindEvent(){
+        this.sureBtn.on('click',this,function(){
+            this.close();
+        })
+    }
+}
+class win extends popBG{
     constructor(){
         super();
         this.zOrder = 99999;
@@ -481,9 +605,9 @@ class bigwin extends popBG{
     init(){
         var container = this.container = new Images();
         this.setSprite(container,{
-            source:webgm.winPop.getTexture('bigwinBG.png'),
-            height:webgm.winPop.getTexture('bigwinBG.png').height,
-            width:webgm.winPop.getTexture('bigwinBG.png').width,
+            source:webgm.winPop.getTexture('reward.png'),
+            height:webgm.winPop.getTexture('reward.png').height,
+            width:webgm.winPop.getTexture('reward.png').width
         })
         this.addChild(container);
     }
@@ -491,3 +615,57 @@ class bigwin extends popBG{
 
     }
 }
+class bigwin extends popBG{
+    constructor(params){
+        super();
+        this.zOrder = 99999;
+        this.init(params);
+        this.bindEvent()
+    }
+    init(params){
+        var container = this.container = new Images();
+        this.setSprite(container,{
+            source:webgm.winPop.getTexture('bigwinBG.png'),
+            height:webgm.winPop.getTexture('bigwinBG.png').height,
+            width:webgm.winPop.getTexture('bigwinBG.png').width,
+        })
+        this.addChild(container);
+        var bigwin_num = this.bigwin_num = new laya.ui.Label();
+        this.setSprite(bigwin_num,{
+            height:106,
+            width:630,
+            centerX:0,
+            top:278,
+            fontSize:90,
+            color:'white',
+            align:'center',
+            text:params.num
+        })
+        this.container.addChild(bigwin_num);
+        var sureBtn = this.sureBtn = new laya.ui.Button();
+        this.setSprite(sureBtn,{
+            skin:'popModules/common_sure.png',
+            left:107,
+            bottom:53,
+            stateNum:1
+        })
+        this.container.addChild(sureBtn);
+        var cannelBtn = this.cannelBtn = new laya.ui.Button();
+        this.setSprite(cannelBtn,{
+            skin:'winpop/bigwin_share.png',
+            right:107,
+            bottom:53,
+            stateNum:1
+        })
+        this.container.addChild(cannelBtn);
+    }
+    bindEvent(){
+        this.cannelBtn.on('click',this,function(){
+            this.close();
+        })
+        this.sureBtn.on('click',this,function(){
+            this.close();
+        })
+    }
+}
+
