@@ -111,7 +111,7 @@ class toChargePOP extends popBG{
             source:webgm.framesPop.getTexture('tochargeBg.png'),
             width : webgm.framesPop.getTexture('tochargeBg.png').width,
             height : webgm.framesPop.getTexture('tochargeBg.png').height,
-            top :164
+            //top :164
         })
         this.addChild(popBG);
 
@@ -596,13 +596,13 @@ class exwin extends commonPOP{
     }
 }
 class win extends popBG{
-    constructor(){
+    constructor(params){
         super();
         this.zOrder = 99999;
-        this.init();
+        this.init(params);
         this.bindEvent()
     }
-    init(){
+    init(params){
         var container = this.container = new Images();
         this.setSprite(container,{
             source:webgm.winPop.getTexture('reward.png'),
@@ -610,6 +610,17 @@ class win extends popBG{
             width:webgm.winPop.getTexture('reward.png').width
         })
         this.addChild(container);
+        var win_num = this.win_num = new laya.ui.Label();
+        this.setSprite(win_num,{
+            fontSize:50,
+            left:390,
+            top:95,
+            height:70,
+            color:'white',
+            valign:'middle',
+            text:params.account
+        })
+        container.addChild(win_num);
     }
     bindEvent(){
 
