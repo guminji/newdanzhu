@@ -118,6 +118,7 @@ webgm.asset = [{
      'popModules.png',
       'winpop.png',
       'help.png',
+      'rank.png',
     'room/skin1/bg.jpg',
     'room/skin1/bg_pachinko.png',
     'room/skin1/bg_pachinko_pathway.png',
@@ -148,6 +149,9 @@ webgm.asset = [{
   type: Loader.ATLAS
 },{
   url: 'help.json',
+  type: Loader.ATLAS
+},{
+  url: 'rank.json',
   type: Loader.ATLAS
 }];
 

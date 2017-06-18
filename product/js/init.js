@@ -59,6 +59,10 @@ class Game {
         jsonUrl: IMG_PATH + 'help.json',
         imageUrl: IMG_PATH + 'help.png'
       });
+      webgm.rankPop = new SpriteFrames({
+        jsonUrl: IMG_PATH + 'rank.json',
+        imageUrl: IMG_PATH + 'rank.png'
+      });
 
       // 雪碧图 - 按钮
       webgm.framesBtn = new SpriteFrames({
