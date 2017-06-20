@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery.js"></script>
+</head>
+<body>
+<input type="button" value="点我" id="postrecord">
+</body>
+<script>
+    $('#postrecord').click(function(){
+        $.ajax({
+            url: "/sendRecord",
+            data: {
+                zipcode: 'asdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasd'
+            },
+            type:'post',
+            success: function( result ) {
+                console.log(1);
+            }
+        });
+    })
+</script>
+</html>
