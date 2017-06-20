@@ -182,10 +182,10 @@ class toChargePOP extends popBG{
     bindEvent(){
         var self = this;
         this.closeBtn.on('click',this,function(){
-            pops.tocharge.popHide();
+            this.close()
         })
         this.sureBtn.on('click',this,function(){
-            pops.tocharge.popHide();
+            this.close()
         })
         this.choseMoney.selectHandler = new Laya.Handler(self,function(index){
             var moneychoose = [10,50,100,500];

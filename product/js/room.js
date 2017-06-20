@@ -1406,47 +1406,30 @@ class RoomHeader extends Component {
 
   // 事件 - 返回
   handlerBack() {
-    pops.takeIn = new laya.components.Popup({
-      name: 'rankPop',
-      box: new rankPop({
-        task:'完成新手任务',
-        account:972324
-      }),
-      closeBtnShow: false,
-      shadeShow: false,
-    })
-    pops.takeIn.popShow();
+    Laya.stage.event('showRank',['rank',new rankPop({
+      task:'完成新手任务',
+      account:972324
+    })]);
     console.log('按钮 - 返回');
   }
 
   // 事件 - 排行榜
   handlerRank() {
-    pops.commonMessage = new laya.components.Popup({
-      name: 'commonMessage',
-      box: new commonMessage('暂未开放此功能！！'),
-      closeBtnShow: false,
-      shadeShow: false,
-    })
-    pops.commonMessage.popShow();
+    Laya.stage.event('showCommonMessage',['CommonMessage',new commonMessage('暂未开放此功能！！')]);
     console.log('按钮 - 排行榜');
   }
 
   // 事件 - 首页
   handlerHome() {
-    pops.tocharge = new laya.components.Popup({
-      name: 'skinPOP',
-      box: new toChargePOP(),
-      closeBtnShow: false,
-      shadeShow: false,
-    })
-    pops.tocharge.popShow();
+    Laya.stage.event('showTocharge',['Tocharge',new toChargePOP()]);
     console.log('按钮 - 首页');
   }
 
   // 事件 - 设置
   handlerConfig() {
-    pops.settings = new settingsPOP();
-    Laya.stage.addChild(pops.settings);
+    Laya.stage.event('showSettings',['showSettings',new settingsPOP()]);
+    //pops.settings = new settingsPOP();
+    //Laya.stage.addChild(pops.settings);
     console.log('按钮 - 设置');
   }
 
