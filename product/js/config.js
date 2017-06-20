@@ -111,6 +111,8 @@ webgm.config = {
 /*------ 0.5 ASSET ------*/
 webgm.asset = [{
   url: [
+    'font/bigwin.png',
+      'font/win.png',
     'bg.png',
     'btn.png',
     'icon.png',
@@ -153,7 +155,13 @@ webgm.asset = [{
 },{
   url: 'rank.json',
   type: Loader.ATLAS
-}];
+},{
+    url: 'font/bigwin.fnt',
+    type: Loader.FONT
+  },{
+    url: 'font/win.fnt',
+    type: Loader.FONT
+  }];
 
 // 静态资源添加对应路径
 webgm.asset.map((obj) => {
@@ -174,6 +182,10 @@ webgm.asset.map((obj) => {
       break;
     case Loader.SOUND:
       obj.url = AUDIO_PATH + obj.url;
+
+      break;
+    case Loader.FONT:
+      obj.url = IMG_PATH + obj.url;
 
       break;
   }

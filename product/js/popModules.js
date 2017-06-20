@@ -612,11 +612,11 @@ class win extends popBG{
         this.addChild(container);
         var win_num = this.win_num = new laya.ui.Label();
         this.setSprite(win_num,{
-            fontSize:50,
+            font:'win',
+
             left:390,
             top:95,
             height:70,
-            color:'white',
             valign:'middle',
             text:params.account
         })
@@ -643,11 +643,11 @@ class bigwin extends popBG{
         this.addChild(container);
         var bigwin_num = this.bigwin_num = new laya.ui.Label();
         this.setSprite(bigwin_num,{
+            font:'bigwin',
             height:106,
             width:630,
             centerX:0,
-            top:278,
-            fontSize:90,
+            top:300,
             color:'white',
             align:'center',
             text:params.num

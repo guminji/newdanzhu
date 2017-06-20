@@ -1406,9 +1406,8 @@ class RoomHeader extends Component {
 
   // 事件 - 返回
   handlerBack() {
-    Laya.stage.event('showRank',['rank',new rankPop({
-      task:'完成新手任务',
-      account:972324
+    Laya.stage.event('showRank',['rank',new win({
+      account:123456789
     })]);
     console.log('按钮 - 返回');
   }
